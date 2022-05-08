@@ -6,8 +6,7 @@ import Date from "../components/date";
 import Link from "next/link";
 
 export default function Home(props) {
-  const { allPostsData, hello } = props;
-  console.log({ hello });
+  const { allPostsData } = props;
   return (
     <Layout home>
       <Head>
@@ -44,13 +43,10 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
-  const hello = await fetch("http://localhost:3000/api/hello").then((res) =>
-    res.json()
-  );
+
   return {
     props: {
       allPostsData,
-      hello,
     },
   };
 }
